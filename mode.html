@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// -------GET：--------
+
+
+		// 1.创建：
+		var xhr=new XMLHttpRequest();
+
+		// 2.打开连接：
+		xhr.open("GET","ajax-data.php");
+
+		// 3.连接，发送第一次请求：
+		xhr.send(null);
+
+		// 4.书写事件：
+
+			//******** onreadystatechange  *******(这个东西老是拼错);
+
+		xhr.onreadystatechange=function(){
+			// 就是把获取的东西打印到控制台上
+			if (this.readyState!==4) return;
+			
+			console.log(this.responseText);//在控制台上打印
+		}
+	</script>
+</head>
+<body>
+	<script>
+		// -------POST的方式：--------
+		// 1.创建ajax:
+		var xhr=new XMLHttpRequest();
+
+		// 2.建立连接：
+				// *****这里是POST而不是GET不用转换;
+		xhr.open("POST","ajax-data.php");
+
+		// 3.发送第一次请求====回车或者访问发送请求：
+
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+		xhr.send("id=12&name=jack&age=13");
+
+		// xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		// xhr.send("id=100&name=10&age=2");
+
+		// 4.请求完成：
+		xhr.onreadystatechange=function(){
+
+			if (this.readyState!==4) return;
+
+
+
+			console.log(this.responseText);//在控制台打印
+		}
+
+
+
+
+
+		/*
+		  异同：
+		  	1.GET请求传递参数
+		  	传参：
+		  		通常使用的问号传参（在url里面传参）;
+		  	post传参
+		  		在send里面传参;
+		  	2.GET是提交数据的时候，无需设置响应体，可以传null或者不传
+		  		POST在提交数据的时候，通过urlencoded要设置响应体，
+		  		send可以不传参
+
+
+		*/
+	</script>
+
+
+
+</body>
+</html>
